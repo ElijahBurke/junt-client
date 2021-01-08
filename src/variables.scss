@@ -1,0 +1,11 @@
+$primary: #14235C;
+$text-light: #ffff;
+$text-dark: #000000;
+$background-one: #ffff;
+$background-two: #eeee;
+
+@mixin flex-center { 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
