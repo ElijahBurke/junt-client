@@ -1,0 +1,70 @@
+@import '../../variables.scss';
+.Hero__hero {
+  @include flex-center;
+  background: $primary;
+  height: 70vh;
+  .hero__inner-container {
+    @include flex-center;
+    width: 90%;
+    height: 80%;
+    .inner-container__text {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      .text__title {
+        font-size: 4rem;
+        color: $text-light;
+        width: 90%;
+        font-weight: 500;
+        height: 33%;
+        @include flex-center;
+      }
+      .text__subtitle {
+        font-size: 2.2rem;
+        color: $text-light;
+        width: 90%;
+        font-weight: 400;
+        height: 33%;
+        @include flex-center;
+      }
+      .text__login {
+        @include flex-center;
+        height: 33%;
+        .button__container {
+          width: 160px;
+          height: 60px;
+        }
+      }
+    }
+    .inner-container__image {
+      @include flex-center;
+      width: 40%;
+      img {
+        width: 90%;
+        height: 100%;
+        @include flex-center;
+      }
+    }
+    .inner-container__see-more {
+      width: 30px;
+      margin-top: 40px;
+      animation: 2.5s ease-in infinite scaling;
+    }
+  }
+}
+
+@keyframes scaling {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+

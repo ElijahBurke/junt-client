@@ -1,0 +1,71 @@
+@import '../../../../variables.scss';
+
+.InfoItem__info-item {
+  height: 100vh;
+  @include flex-center;
+  .info-item__inner-container {
+    @include flex-center;
+    width: 95%;
+    height: 80%;
+    flex-direction: column;
+    width: 90%;
+    @media only screen and (min-width: 850px) {
+      flex-direction: row;
+    }
+    .inner-container__text {
+      @include flex-center;
+      flex-direction: column;
+      height: 60%;
+      width: 90%;
+      @media only screen and (min-width: 850px) {
+        height: 90%;
+        width: 50%;
+      }
+      .text__title {
+        font-size: 4rem;
+        text-align: center;
+        padding-bottom: 5%;
+        width: 100%;
+        @media only screen and (min-width: 850px) {
+          text-align: left;
+        }
+      }
+      .text__body {
+        font-size: 2.2rem;
+        text-align: center;
+        @media only screen and (min-width: 850px) {
+          text-align: left;
+        }
+      }
+    }
+    .inner-container__img {
+      @include flex-center;
+      height: 40%;
+      @media only screen and (min-width: 850px) {
+        text-align: left;
+        width: 50%;
+        height: 70%;
+      }
+      img {
+        width: 80%;
+        max-height: 100%;
+      }
+    }
+  }
+}
+
+@for $i from 1 through 2 { 
+.InfoItem__info-item {
+    &:nth-child(#{$i}) {
+      background: $background-one;
+      @if $i % 2 != 0 {
+        background: $background-two;
+        .info-item__inner-container {
+          @media only screen and (min-width: 850px) {
+            flex-direction: row-reverse;
+          }
+        }
+      }
+    }
+  }
+}
