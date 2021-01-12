@@ -1,0 +1,13 @@
+.Applications__applications {
+  display: flex;
+  min-height: 82vh;
+  justify-content: center;
+  .applications__inner-container {
+    margin: 3% 0%;
+    width: 90%;
+    .inner-container__not-logged-in {
+      margin: 3% 0%;
+      font-size: 1.6rem;
+    }
+  }
+}

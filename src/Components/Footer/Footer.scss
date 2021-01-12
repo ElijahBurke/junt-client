@@ -3,6 +3,7 @@
   height: 8vh;
   background: $primary;
   @include flex-center;
+  z-index: 2;
   .footer__inner-container {
     width: 90%;
     height: 90%;

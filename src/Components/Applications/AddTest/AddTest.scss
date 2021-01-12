@@ -1,0 +1,75 @@
+@import '../../../variables.scss';
+.AddTest__add-test {
+  background: $background-two;
+  border-radius: 5px;
+  padding: 1.5% 3%;
+  .add-test__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 3%;
+    border: 1px $primary;
+    border-bottom-style: solid;
+    margin: 2% 0%;
+    .header__title {
+      color: $primary;
+      font-size: 3rem;
+    }
+    .header__add {
+      button {
+        min-width: 120px;
+        min-height: 40px;
+        @media only screen and (min-width: 650px) {
+          min-width: 180px;
+          min-height: 60px;
+        }
+        @media only screen and (min-width: 850px) {
+          min-width: 210px;
+          min-height: 70px;
+        }
+        @media only screen and (min-width: 1000px) {
+          min-width: 240px;
+          min-height: 80px;
+        }
+        height: 100%;
+        font-size: 2rem;
+        border: 1.2px solid lighten($primary, 10%);
+        color: lighten($primary, 10%);
+        border-radius: 2px;
+        transition: all 0.5s;
+        background: none;
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+  .add-test__subtitle {
+    font-size: 2.6rem;
+    color: lighten($primary, 10%);  
+  }
+  .add-test__extra-info {
+    div {
+      color: lighten($primary, 15%);
+      font-size: 1.6rem;
+      margin: 2% 0%;
+    }
+  }
+  .add-test__see-more {
+    @include flex-center;
+    button {
+      border: none;
+      background: none;
+      width: 2%;
+      &.rotated {
+        transform: rotate(180deg);
+      }
+      &:focus {
+        outline: none;
+      }
+      img {
+        animation: scaling 3s ease infinite;
+      }
+    }
+  }
+}

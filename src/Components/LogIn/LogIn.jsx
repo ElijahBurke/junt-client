@@ -144,9 +144,7 @@ function LogIn() {
       )}
       {user.name
       && (
-        <div className="UserModal__wrapper">
-          <UserLoggedInModal user={user} />
-        </div>
+      <UserLoggedInModal user={user} />
       )}
     </div>
   );

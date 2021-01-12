@@ -20,7 +20,7 @@
     }
     &.active {
       color: $text-light;
-      background: lighten($primary, 10%)
+      background: lighten($primary, 10%);
     }
   }
   .log-in__inner-container {
@@ -60,6 +60,7 @@
         input {
           width: 100%;
           height: 100%;
+          font-size: 1.4rem;
           &:focus:required:invalid {
             background-color: pink; color: white;
           }
@@ -74,14 +75,4 @@
       width: 70%;
     }
   }
-}
-
-.UserModal__wrapper {
-  opacity: 0;
-  animation: opacify 1s ease forwards;
-}
-
-@keyframes opacify {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
 }
