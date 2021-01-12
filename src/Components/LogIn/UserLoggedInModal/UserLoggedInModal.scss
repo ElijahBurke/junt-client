@@ -1,0 +1,38 @@
+@import '../../../variables.scss';
+.UserLoggedInModal__whole-page {
+  height: 100vh;
+  width: 100vw;
+  background: $background-two;
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include flex-center;
+  .whole-page__modal {
+    width: 60%;
+    height: 60%;
+    background: $primary;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .modal__title {
+      font-size: 2rem;
+      color: $text-light;
+      margin: 5% 0%;
+    }
+    .modal__sub-title {
+      color: $text-light;
+      font-size: 1.6rem;
+    }
+  }
+}
+.UserLoggedInModal__opacity-layer {
+  height: 100vh;
+  width: 100vw;
+  background: $background-two;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+  z-index: 2;
+}

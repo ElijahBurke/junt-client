@@ -1,3 +1,87 @@
+@import '../../variables.scss';
 .LogIn__log-in {
   height: 82vh;
+  @include flex-center;
+  .transition {
+    transition: all 0.2s;
+  }
+  button,
+  .form__button {
+    padding: 3% 5%;
+    margin: 10% 2%;
+    min-width: 120px;
+    font-size: 1.6rem;
+    border: 1.2px solid lighten($primary, 10%);
+    color: lighten($primary, 10%);
+    border-radius: 2px;
+    transition: all 0.5s;
+    &:hover {
+      transform: scale(1.05);
+    }
+    &.active {
+      color: $text-light;
+      background: lighten($primary, 10%)
+    }
+  }
+  .log-in__inner-container {
+    width: 80%;
+    height: 80%;
+    background: $background-two;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+    min-width: 260px;
+    .inner-container__choose {
+      height: 20%;
+      @include flex-center;
+    }
+    .inner-container__error {
+      width: 80%;
+      color: red;
+      width: 60%;
+      font-size: 1.2rem;
+    }
+    form {
+      width: 60%;
+      height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      label {
+        display: flex;
+        flex-direction: column;
+        margin: 2% 0%;
+        font-size: 1.4rem;
+        width: 100%;
+        height: 10%;
+        color: lighten($primary, 10%);
+        input {
+          width: 100%;
+          height: 100%;
+          &:focus:required:invalid {
+            background-color: pink; color: white;
+          }
+          &:required:valid {background-color: white; color: black; }
+        }
+      }
+    }
+  }
+  .log-in__img {
+    @include flex-center;
+    img {
+      width: 70%;
+    }
+  }
+}
+
+.UserModal__wrapper {
+  opacity: 0;
+  animation: opacify 1s ease forwards;
+}
+
+@keyframes opacify {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
