@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import DownArrow from './DownArrow.svg';
 import './AddTest.scss';
+import AddTestModal from './AddTestModal/AddTestModal';
 
 function AddTest() {
-  const user = useSelector((state) => state.user);
   const [seeMore, setSeeMore] = useState(true);
-  console.log(user);
+  const [showAddTest, setShowAddTest] = useState(false);
   return (
-    <div className="AddTest__add-test">
-      <div className="add-test__header">
-        <div className="header__title">
-          A/B Testing
+    <>
+      <section className="AddTest__add-test">
+        <div className="add-test__header">
+          <div className="header__title">
+            A/B Testing
+          </div>
+          <div className="header__add">
+            <button type="button" onClick={() => setShowAddTest(true)}>
+              Add Test
+            </button>
+          </div>
         </div>
-        <div className="header__add">
-          <button type="button" onClick={() => {}}>
-            Add Test
-          </button>
-        </div>
-      </div>
-      {seeMore
+        {seeMore
       && (
       <>
         <div className="add-test__subtitle">
@@ -38,12 +38,15 @@ function AddTest() {
         </div>
       </>
       )}
-      <div className="add-test__see-more">
-        <button className={seeMore && 'rotated'} type="button" onClick={() => setSeeMore((curr) => !curr)}>
-          <img src={DownArrow} alt="arrow down" />
-        </button>
-      </div>
-    </div>
+        <div className="add-test__see-more">
+          <button className={seeMore ? 'rotated' : undefined} type="button" onClick={() => setSeeMore((curr) => !curr)}>
+            <img src={DownArrow} alt="arrow down" />
+          </button>
+        </div>
+      </section>
+      {showAddTest
+      && <AddTestModal setShowAddTest={setShowAddTest} />}
+    </>
   );
 }
 

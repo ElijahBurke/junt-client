@@ -27,10 +27,20 @@ const setUser = (user) => (dispatch) => R.compose(
   ),
 )(user);
 
+const addTest = (test) => (dispatch) => R.compose(
+  dispatch,
+  R.ifElse(
+    checkIfError,
+    createAction(actionTypes.SET_ERROR, 'error'),
+    createAction(actionTypes.ADD_TEST, 'test'),
+  ),
+)(test);
+
 const actionCreators = {
   setShowSideNav,
   setUser,
   setError,
+  addTest,
 };
 
 export default actionCreators;

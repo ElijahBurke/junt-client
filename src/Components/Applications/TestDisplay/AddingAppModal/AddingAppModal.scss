@@ -1,0 +1,91 @@
+@import '../../../../variables.scss';
+  .AddingAppModal__whole-page {
+    height: 100vh;
+    width: 100%;
+    background: $background-two;
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include flex-center;
+    .AddingAppModal__modal {
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      animation: opacify 1s ease forwards;
+      width: 90%;
+      @media only screen and (min-width: 1000px) {
+        width: 60%;
+      }
+      height: 78%;
+      background: $primary;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        .form__button {
+            height: 100%;
+            font-size: 1.6rem;
+            border: 1.2px solid $text-light;
+            color: $text-light;
+            border-radius: 2px;
+            transition: all 0.2s;
+            background: none;
+            width: 30%;
+            min-width: 120px;
+            cursor: pointer;
+            align-self: center;
+            &:hover {
+              transform: scale(1.05);
+            }
+        }
+        label {
+          color: $text-light;
+          display: flex;
+          flex-direction: column;
+          margin: 8px 0%;
+          font-size: 1.4rem;
+          input {
+            margin: 5px 0%;
+            font-size: 1.2rem;
+            padding: 0px 3px;
+          }
+          textarea {
+            font-size: 1.2rem;
+            margin: 1% 0%;
+            min-height: 150px;
+            padding: 0px 3px;
+          }
+        }
+      }
+    }
+  }
+  .AddingAppModal__opacity-layer {
+    height: 100vh;
+    width: 100%;
+    background: $background-two;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 2;
+    animation: opacifyPartial 1s ease forwards;
+  }
+  
+  @keyframes opacifyPartial {
+    0% { opacity: 0; }
+    100% { opacity: 0.7; }
+  }
+  
+  @keyframes opacify {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }

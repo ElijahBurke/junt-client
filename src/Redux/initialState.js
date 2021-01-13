@@ -6,14 +6,15 @@ const initialState = {
     email: false,
   },
   error: '',
-  // tests: [
-  //   {
-  //     shortDesc: '',
-  //     longDesc: '',
-  //     // other Info here...
-  //     applicationIds: [],
-  //   }
-  // ],
+  tests: [
+    // {
+    //   id: 0,
+    //   name: '',
+    //   desc: '',
+    //   cover: '',
+    //   // applicationIds: [],
+    // },
+  ],
   // applications: {
   //   id: {info},
   // },

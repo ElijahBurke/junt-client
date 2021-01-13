@@ -56,10 +56,10 @@ function LogIn() {
     e.preventDefault();
     if (!isLoggingIn) {
       apiHelpers.postBody(formState, '/users/create')
-        .then((res) => R.compose(dispatch, actionCreators.setUser)(res));
+        .then(R.compose(dispatch, actionCreators.setUser));
     } else {
       apiHelpers.postBody(formState, '/users/login')
-        .then((res) => R.compose(dispatch, actionCreators.setUser)(res));
+        .then(R.compose(dispatch, actionCreators.setUser));
     }
   };
 

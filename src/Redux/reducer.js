@@ -9,6 +9,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, user: action.payload.user };
     case actionTypes.SET_ERROR:
       return { ...state, error: action.payload.error.error };
+    case actionTypes.ADD_TEST:
+      return { ...state, tests: [...state.tests, action.payload.test] };
     default:
       return state;
   }

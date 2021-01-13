@@ -1,5 +1,5 @@
 @import '../../../variables.scss';
-.AddTest__add-test {
+.TestDisplay__test-display {
   background: $background-two;
   border-radius: 5px;
   padding: 1.5% 3%;
@@ -13,22 +13,22 @@
     margin: 2% 0%;
     .header__title {
       color: $primary;
-      font-size: 3rem;
+      font-size: 2rem;
     }
     .header__add {
       button {
-        min-width: 120px;
+        min-width: 60px;
         min-height: 40px;
         @media only screen and (min-width: 650px) {
-          min-width: 180px;
+          min-width: 90px;
           min-height: 60px;
         }
         @media only screen and (min-width: 850px) {
-          min-width: 210px;
+          min-width: 105px;
           min-height: 70px;
         }
         @media only screen and (min-width: 1000px) {
-          min-width: 240px;
+          min-width: 120px;
           min-height: 80px;
         }
         height: 100%;
@@ -41,36 +41,6 @@
         &:hover {
           transform: scale(1.05);
         }
-      }
-    }
-  }
-  .add-test__subtitle {
-    font-size: 2.6rem;
-    color: lighten($primary, 10%);  
-    transition: all 1s ease;
-  }
-  .add-test__extra-info {
-  transition: all 1s ease;
-    div {
-      color: lighten($primary, 15%);
-      font-size: 1.6rem;
-      margin: 2% 0%;
-    }
-  }
-  .add-test__see-more {
-    @include flex-center;
-    button {
-      border: none;
-      background: none;
-      width: 2%;
-      &.rotated {
-        transform: rotate(180deg);
-      }
-      &:focus {
-        outline: none;
-      }
-      img {
-        animation: scaling 3s ease infinite;
       }
     }
   }
