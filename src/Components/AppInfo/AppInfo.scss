@@ -1,0 +1,111 @@
+@import '../../variables.scss';
+.AppInfo__app-info {
+  min-height: 82vh;
+  @include flex-center;
+  .app-info__display {
+    width: 90%;
+    background: $background-two;
+    border-radius: 5px; 
+    padding: 2% 5%;
+    margin: 5% 0%;
+    .display__company {
+      margin: 2% 0;
+      div {
+        font-size: 2rem;
+        color: $primary;
+        text-transform: capitalize;
+        &:nth-child(2) {
+          color: lighten($primary, 30%);
+        }
+      }
+    }
+    .display__role {
+    margin: 2% 0;
+      div {
+        font-size: 2rem;
+        text-transform: capitalize;
+        color: $primary;
+        &:nth-child(2) {
+          color: lighten($primary, 30%);
+        }
+      }
+    }
+    .display__url {
+    margin: 2% 0;
+      div {
+        font-size: 1.6rem;
+        color: $primary;
+        a {
+        font-size: 1.6rem;
+        color: lighten($primary, 30%);
+        }
+      }
+    }
+    .display__status {
+    margin: 2% 0;
+      div {
+        font-size: 1.6rem;
+        color: $primary;
+        span {
+          font-size: 1.6rem;
+          color: lighten($primary, 30%);
+        }
+      }
+      .status__buttons {
+        button {
+          border: none;
+          background: lighten($primary, 30%);
+          border-radius: 50%;
+          padding: 5px;
+          font-size: 2rem;
+          margin: 1% 2% 0% 0%;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+    .display__cover,
+    .display__notes {
+    margin: 2% 0;
+      div {
+        font-size: 1.6rem;
+        color: $primary;
+      }
+      textarea {
+        width: 100%;
+        border: 1px solid lighten($primary, 30%);
+        background: $text-light;
+        border-radius: 5px;
+        padding: 10px;
+        color: $primary;
+        font-size: 1.4rem;
+        height: 300px;
+        &:focus {
+          outline: none;
+        }
+      }
+      .cover__buttons,
+      .notes__buttons {
+        @include flex-center;
+        button {
+          padding: 1.5% 5%;
+          margin: 1% 2% 0% 2%;;
+          min-width: 120px;
+          font-size: 1.6rem;
+          border: 1.2px solid lighten($primary, 20%);
+          color: lighten($primary, 20%);
+          border-radius: 2px;
+          transition: all 0.5s;
+          &:nth-child(2) {
+            background: lighten($primary, 20%);
+            color: $text-light;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ const SET_USER = 'SET_USER';
 const SET_ERROR = 'SET_ERROR';
 const ADD_TEST = 'ADD_TEST';
 const ADD_APPLICATION = 'ADD_APPLICATION';
+const UPDATE_APPLICATION = 'UPDATE_APPLICATION';
 
 const actionTypes = {
   SET_SHOWSIDENAV,
@@ -10,6 +11,7 @@ const actionTypes = {
   SET_ERROR,
   ADD_TEST,
   ADD_APPLICATION,
+  UPDATE_APPLICATION,
 };
 
 export default actionTypes;

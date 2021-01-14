@@ -1,0 +1,82 @@
+@import '../../../../../variables.scss';
+.AppCard__app-card {
+  width: 97%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  background: lighten($primary, 20%);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 1%;
+  height: 120px;
+  &.interview {
+    background: $interview;
+  }
+  &.rejected {
+    background: $rejected;
+  }
+  @media only screen and (min-width: 500px) {
+    margin: 1%;
+    width: 48%;
+    height: 150px;
+  }
+  @media only screen and (min-width: 900px) {
+    margin: 0.8%;
+    width: 31%;
+    height: 180px;
+  }
+  @media only screen and (min-width: 1200px) {
+    margin: 0.6%;
+    width: 23.5%;
+    height: 200px;
+  }
+  div,
+  a {
+    color: $text-light;
+    text-transform: capitalize;
+    text-align: center;
+  }
+  a {
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+  div {
+    margin: 1px 0px;
+  }
+  .app-card__company {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  .app-card__role {
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+  .app-card__buttons {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    button {
+      min-width: 18%;
+      min-height: 15px;
+      padding: 2px 8px;
+      @media only screen and (min-width: 500px) {
+        min-width: 18%;
+        min-height: 18px;
+      }
+      @media only screen and (min-width: 900px) {
+        min-width: 18%;
+        min-height: 21px;
+      }
+      @media only screen and (min-width: 1200px) {
+        min-width: 18%;
+        min-height: 24px;
+      }
+      font-size: 1.4rem;
+      background: $text-light;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}

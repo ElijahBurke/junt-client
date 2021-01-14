@@ -8,6 +8,7 @@ import Footer from './Components/Footer/Footer';
 import Applications from './Components/Applications/Applications';
 import Dashboard from './Components/Dashboard/Dashboard';
 import LogIn from './Components/LogIn/LogIn';
+import AppInfo from './Components/AppInfo/AppInfo';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/applications" component={Applications} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/login" component={LogIn} />
+        <Route exact path="/application/:id" render={(routeProps) => <AppInfo id={routeProps.match.params.id} />} />
       </Switch>
       <Footer />
     </>

@@ -18,8 +18,6 @@ const reducer = (state = initialState, action) => {
         },
       };
     case actionTypes.ADD_APPLICATION:
-      console.log(action);
-      console.log('hi');
       return {
         ...state,
         applications: {
@@ -36,6 +34,14 @@ const reducer = (state = initialState, action) => {
               action.payload.application.id,
             ],
           },
+        },
+      };
+    case actionTypes.UPDATE_APPLICATION:
+      return {
+        ...state,
+        applications: {
+          ...state.applications,
+          [action.payload.application.id]: action.payload.application,
         },
       };
     default:

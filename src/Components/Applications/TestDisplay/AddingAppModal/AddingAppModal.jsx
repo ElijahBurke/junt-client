@@ -13,6 +13,7 @@ const defaultState = {
   company: '',
   role: '',
   url: '',
+  notes: '',
 };
 
 function AddingAppModal({ cover, idFromTest, setAddingApplication }) {
@@ -100,7 +101,7 @@ function AddingAppModal({ cover, idFromTest, setAddingApplication }) {
                   />
                 </label>
                 <label>
-                  Where role are you applying for?
+                  What role are you applying for?
                   <input
                     type="text"
                     name="role"
@@ -121,6 +122,16 @@ function AddingAppModal({ cover, idFromTest, setAddingApplication }) {
                     value={formState.url}
                     onChange={onChange(setFormState, 'url')}
                     placeholder="http://www.jobspec.com"
+                  />
+                </label>
+                <label>
+                  Any Extra Notes?
+                  <textarea
+                    type="text"
+                    name="notes"
+                    value={formState.notes}
+                    onChange={onChange(setFormState, 'notes')}
+                    placeholder="Any Extra Notes You Want To Save?"
                   />
                 </label>
                 {R.compose(

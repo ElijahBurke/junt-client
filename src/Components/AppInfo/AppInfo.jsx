@@ -1,0 +1,124 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useRef, useState } from 'react';
+import * as R from 'ramda';
+import './AppInfo.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import apiHelpers from '../../Helpers/Api/apiService';
+import actionCreators from '../../Redux/actionCreators';
+
+function AppInfo({ id }) {
+  const application = useSelector((state) => state.applications[id]);
+  const [coverLetterState, setCoverLetterState] = useState(application.cover);
+  const [noteState, setNoteState] = useState(application.notes);
+  const dispatch = useDispatch();
+  const updatedCoverLetterRef = useRef();
+  const noteRef = useRef();
+  console.log(application);
+
+  const copyToClipboard = (refToCopy) => () => {
+    refToCopy.current.select();
+    refToCopy.current.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+  };
+
+  const updateApplicationThroughAPI = (toUpdate) => (e) => {
+    e.preventDefault();
+    apiHelpers.postBody({ applicationId: application.id, toUpdate }, '/application/update')
+      .then(R.compose(dispatch, actionCreators.updateApplication));
+  };
+
+  return (
+    <div className="AppInfo__app-info">
+      <div className="app-info__display">
+        <div className="display__company">
+          <div>
+            Company Name:
+          </div>
+          <div>
+            {application.company}
+          </div>
+        </div>
+        <div className="display__role">
+          <div>
+            Job Role:
+          </div>
+          <div>
+            {application.role}
+          </div>
+        </div>
+        <div className="display__url">
+          <div>
+            You Can Find A Link To The Job Description
+            {' '}
+            <a href={application.url} rel="noreferrer" target="_blank">Here.</a>
+          </div>
+        </div>
+        <div className="display__status">
+          <div>
+            Currently, you have
+            {' '}
+            <span>
+              {application.interview ? 'been offered an interview' : application.rejected ? 'been rejected' : 'applied'}
+            </span>
+            {' '}
+            for this position. Update your status:
+          </div>
+          <div className="status__buttons">
+            <button type="button" onClick={updateApplicationThroughAPI({ rejected: !application.rejected, interview: false })}>👎</button>
+            <button type="button" onClick={updateApplicationThroughAPI({ rejected: false, interview: !application.interview })}>👍</button>
+          </div>
+        </div>
+        <div className="display__cover">
+          <div>
+            Here is the cover letter you used:
+          </div>
+          <textarea
+            type="text"
+            name="updated cover letter"
+            required
+            value={coverLetterState}
+            ref={updatedCoverLetterRef}
+            onChange={(e) => setCoverLetterState(e.target.value)}
+          />
+          <div className="cover__buttons">
+            <button type="button" onClick={updateApplicationThroughAPI({ cover: coverLetterState })}>
+              Save
+            </button>
+            <button type="button" onClick={copyToClipboard(updatedCoverLetterRef)}>
+              Copy
+            </button>
+          </div>
+        </div>
+        <div className="display__notes">
+          <div>
+            Here Are Your Notes For This Application:
+          </div>
+          <textarea
+            type="text"
+            name="notes"
+            required
+            value={noteState}
+            ref={noteRef}
+            onChange={(e) => setNoteState(e.target.value)}
+          />
+          <div className="notes__buttons">
+            <button type="button" onClick={updateApplicationThroughAPI({ notes: noteState })}>
+              Save
+            </button>
+            <button type="button" onClick={copyToClipboard(noteRef)}>
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+AppInfo.propTypes = {
+  id: PropTypes.string.isRequired,
+};
+
+export default AppInfo;

@@ -56,12 +56,22 @@ const addApplication = (application) => (dispatch) => R.compose(
   ),
 )(application);
 
+const updateApplication = (application) => (dispatch) => R.compose(
+  dispatch,
+  R.ifElse(
+    checkIfError,
+    createAction(actionTypes.SET_ERROR, 'error'),
+    createAction(actionTypes.UPDATE_APPLICATION, 'application'),
+  ),
+)(application);
+
 const actionCreators = {
   setShowSideNav,
   setUser,
   setError,
   addTest,
   addApplication,
+  updateApplication,
 };
 
 export default actionCreators;

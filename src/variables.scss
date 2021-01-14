@@ -3,6 +3,8 @@ $text-light: #ffff;
 $text-dark: #000000;
 $background-one: #ffff;
 $background-two: #eeee;
+$interview: rgb(0, 88, 0);
+$rejected: rgb(122, 0, 0);
 
 @mixin flex-center { 
   display: flex; 

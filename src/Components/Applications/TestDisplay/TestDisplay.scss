@@ -44,4 +44,21 @@
       }
     }
   }
+  .TestDisplay__see-more {
+    @include flex-center;
+    button {
+      border: none;
+      background: none;
+      width: 2%;
+      &.rotated {
+        transform: rotate(180deg);
+      }
+      &:focus {
+        outline: none;
+      }
+      img {
+        animation: scaling 3s ease infinite;
+      }
+    }
+  }
 }

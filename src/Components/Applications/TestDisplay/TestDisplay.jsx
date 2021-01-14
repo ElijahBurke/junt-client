@@ -3,8 +3,10 @@ import './TestDisplay.scss';
 import PropTypes from 'prop-types';
 import AddingAppModal from './AddingAppModal/AddingAppModal';
 import DisplayApplications from './DisplayApplications/DisplayApplications';
+import DownArrow from '../AddTest/DownArrow.svg';
 
 function TestDisplay({ test }) {
+  const [seeMore, setSeeMore] = useState(true);
   const [addingApplication, setAddingApplication] = useState(false);
   return (
     <>
@@ -20,9 +22,13 @@ function TestDisplay({ test }) {
           </div>
         </div>
 
-        {test.applicationIds.length > 0
+        {test.applicationIds.length > 0 && seeMore
           && <DisplayApplications applicationIds={test.applicationIds} />}
-        )
+        <div className="TestDisplay__see-more">
+          <button className={seeMore ? 'rotated' : undefined} type="button" onClick={() => setSeeMore((curr) => !curr)}>
+            <img src={DownArrow} alt="arrow down" />
+          </button>
+        </div>
       </section>
       {addingApplication && (
         <AddingAppModal
