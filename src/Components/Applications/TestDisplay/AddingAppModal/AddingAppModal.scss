@@ -72,6 +72,73 @@
         }
       }
     }
+    .modal__job-added {
+      height: 90%;
+      width: 80%; 
+      & > * {
+        color: $text-light;
+      }
+      .job-added__title {
+        font-size: 2rem;
+        width: 100%;
+      }
+      textarea {
+        background: $primary;
+        width: 100%;
+        overflow-y: scroll;
+        height: 80%;
+        padding: 5px;
+        font-size: 1.2rem;
+        padding: 10px 0px;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      }
+      .job-added__buttons {
+        @include flex-center;
+        button {
+        width: 20%;
+        min-width: 100px;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: all 0.2s;
+        align-self: center;
+        height: 100%;
+        font-size: 1.6rem;
+        border: 1.2px solid $text-light;
+        margin: 0px 5px;
+          &:hover {
+            transform: scale(1.05);
+            width: 20%;
+            min-width: 100px;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.2s;
+            align-self: center;
+            height: 100%;
+            font-size: 1.6rem;
+            border: 1.2px solid $text-light;
+          }
+        }
+        & button:nth-child(1) {
+            color: $text-light;
+            background: none;
+        }
+        & button:nth-child(2) {
+            background: $text-light;
+            color: $primary;
+            border-radius: 2px;
+            transition: all 0.2s;
+            width: 20%;
+            min-width: 100px;
+            cursor: pointer;
+            align-self: center;
+            &:hover {
+              transform: scale(1.05);
+            }
+        }
+      }
+    }
   }
   .AddingAppModal__opacity-layer {
     height: 100vh;

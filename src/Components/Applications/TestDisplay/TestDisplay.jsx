@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './TestDisplay.scss';
 import PropTypes from 'prop-types';
 import AddingAppModal from './AddingAppModal/AddingAppModal';
+import DisplayApplications from './DisplayApplications/DisplayApplications';
 
 function TestDisplay({ test }) {
   const [addingApplication, setAddingApplication] = useState(false);
@@ -18,6 +19,10 @@ function TestDisplay({ test }) {
             </button>
           </div>
         </div>
+
+        {test.applicationIds.length > 0
+          && <DisplayApplications applicationIds={test.applicationIds} />}
+        )
       </section>
       {addingApplication && (
         <AddingAppModal

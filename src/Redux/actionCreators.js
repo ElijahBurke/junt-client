@@ -27,6 +27,16 @@ const setUser = (user) => (dispatch) => R.compose(
   ),
 )(user);
 
+// const checkIfKeyAndIfNotAddArr = R.curry((obj, key) => {
+//   if (!obj[key]) obj[key] = [];
+//   return obj;
+// });
+
+const checkIfKeyAndIfNotAddArr = (key) => R.when(
+  R.complement(R.has)(key),
+  R.assoc(key, []),
+);
+
 const addTest = (test) => (dispatch) => R.compose(
   dispatch,
   R.ifElse(
@@ -34,6 +44,7 @@ const addTest = (test) => (dispatch) => R.compose(
     createAction(actionTypes.SET_ERROR, 'error'),
     createAction(actionTypes.ADD_TEST, 'test'),
   ),
+  checkIfKeyAndIfNotAddArr('applicationIds'),
 )(test);
 
 const addApplication = (application) => (dispatch) => R.compose(

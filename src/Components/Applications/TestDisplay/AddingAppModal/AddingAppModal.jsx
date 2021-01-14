@@ -60,7 +60,7 @@ function AddingAppModal({ cover, idFromTest, setAddingApplication }) {
     buildAppObjectAndStore(toUpdateCover)
       .then((res) => {
         setUpdatedCoverLetter(res.cover);
-        R.compose(dispatch, actionCreators.addApplication);
+        R.compose(dispatch, actionCreators.addApplication)(res);
       });
   };
 
@@ -130,22 +130,20 @@ function AddingAppModal({ cover, idFromTest, setAddingApplication }) {
                 <input type="submit" value="Submit" className="form__button" />
               </form>
             ) : (
-              <>
-                <div className="modal__job-added">
+              <div className="modal__job-added">
+                <div className="job-added__title">
                   Job Succesfuly Added.
                   Here is your cover letter:
                 </div>
-                <label>
-                  <textarea
-                    type="text"
-                    name="updated cover letter"
-                    required
-                    value={updatedCoverLetter}
-                    ref={updatedCoverLetterRef}
-                    readOnly
-                  />
-                </label>
-                <div className="modal__buttons">
+                <textarea
+                  type="text"
+                  name="updated cover letter"
+                  required
+                  value={updatedCoverLetter}
+                  ref={updatedCoverLetterRef}
+                  readOnly
+                />
+                <div className="job-added__buttons">
                   <button type="button" onClick={() => setAddingApplication(false)}>
                     Close
                   </button>
@@ -153,7 +151,7 @@ function AddingAppModal({ cover, idFromTest, setAddingApplication }) {
                     Copy
                   </button>
                 </div>
-              </>
+              </div>
             )}
         </div>
       </div>

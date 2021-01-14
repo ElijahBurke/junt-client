@@ -6,7 +6,7 @@ const initialState = {
     email: false,
   },
   error: '',
-  tests: [
+  tests: {
     // {
     //   id: 0,
     //   name: '',
@@ -14,9 +14,9 @@ const initialState = {
     //   cover: '',
     //   // applicationIds: [],
     // },
-  ],
+  },
   // can we make tests an object with ids as key?
-  application: {},
+  applications: {},
 };
 
 export default initialState;
