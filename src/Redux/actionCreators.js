@@ -36,11 +36,21 @@ const addTest = (test) => (dispatch) => R.compose(
   ),
 )(test);
 
+const addApplication = (application) => (dispatch) => R.compose(
+  dispatch,
+  R.ifElse(
+    checkIfError,
+    createAction(actionTypes.SET_ERROR, 'error'),
+    createAction(actionTypes.ADD_APPLICATION, 'application'),
+  ),
+)(application);
+
 const actionCreators = {
   setShowSideNav,
   setUser,
   setError,
   addTest,
+  addApplication,
 };
 
 export default actionCreators;

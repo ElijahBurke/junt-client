@@ -31,6 +31,11 @@
         display: flex;
         flex-direction: column;
         width: 80%;
+        overflow-y: scroll;
+        padding: 5% 0%;
+        &::-webkit-scrollbar {
+          display: none;
+        } 
         .form__button {
             height: 100%;
             font-size: 1.6rem;

@@ -1,3 +1,5 @@
+import * as R from 'ramda';
+
 const BASE_URL = 'http://localhost:3001';
 
 const defaultOptions = {
@@ -18,10 +20,10 @@ const fetchRequest = (base, defaults) => (path,
 
 const fetchRequestWithDefaultsAndBaseUrl = fetchRequest(BASE_URL, defaultOptions);
 
-const postBody = (body, path) => fetchRequestWithDefaultsAndBaseUrl(path, {
+const postBody = R.curry((body, path) => fetchRequestWithDefaultsAndBaseUrl(path, {
   method: 'POST',
   body: JSON.stringify(body),
-});
+}));
 
 const apiHelpers = {
   fetchRequestWithDefaultsAndBaseUrl,

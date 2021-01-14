@@ -15,9 +15,8 @@ const initialState = {
     //   // applicationIds: [],
     // },
   ],
-  // applications: {
-  //   id: {info},
-  // },
+  // can we make tests an object with ids as key?
+  application: {},
 };
 
 export default initialState;

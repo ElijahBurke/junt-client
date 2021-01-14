@@ -11,6 +11,15 @@ const reducer = (state = initialState, action) => {
       return { ...state, error: action.payload.error.error };
     case actionTypes.ADD_TEST:
       return { ...state, tests: [...state.tests, action.payload.test] };
+    case actionTypes.ADD_APPLICATION:
+      console.log(action);
+      return {
+        ...state,
+        application: {
+          ...state.application,
+          [action.payload.application.id]: action.payload.application,
+        },
+      };
     default:
       return state;
   }

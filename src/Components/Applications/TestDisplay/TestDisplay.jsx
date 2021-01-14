@@ -20,7 +20,11 @@ function TestDisplay({ test }) {
         </div>
       </section>
       {addingApplication && (
-        <AddingAppModal cover={test.cover} />
+        <AddingAppModal
+          cover={test.cover}
+          idFromTest={test.id}
+          setAddingApplication={setAddingApplication}
+        />
       )}
     </>
   );
