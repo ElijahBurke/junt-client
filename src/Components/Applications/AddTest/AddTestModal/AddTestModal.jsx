@@ -31,8 +31,7 @@ function AddTestModal({ setShowAddTest }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
-    apiHelpers.postBody({ ...formState, userId: 1 }, '/test/add')
+    apiHelpers.postBody({ ...formState, userId: user.id }, '/test/add')
       .then(R.compose(dispatch, actionCreators.addTest))
       .then(() => setShowAddTest(false));
   };

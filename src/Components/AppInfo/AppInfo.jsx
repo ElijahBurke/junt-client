@@ -15,7 +15,6 @@ function AppInfo({ id }) {
   const dispatch = useDispatch();
   const updatedCoverLetterRef = useRef();
   const noteRef = useRef();
-  console.log(application);
 
   const copyToClipboard = (refToCopy) => () => {
     refToCopy.current.select();

@@ -9,6 +9,11 @@ const reducer = (state = initialState, action) => {
       return { ...state, user: { ...state.user, ...action.payload.user } };
     case actionTypes.SET_ERROR:
       return { ...state, error: action.payload.error.error };
+    case actionTypes.SET_TESTS:
+      return {
+        ...state,
+        tests: { ...state.tests, ...action.payload.tests },
+      };
     case actionTypes.ADD_TEST:
       return {
         ...state,
@@ -16,6 +21,11 @@ const reducer = (state = initialState, action) => {
           ...state.tests,
           [action.payload.test.id]: action.payload.test,
         },
+      };
+    case actionTypes.SET_APPLICATIONS:
+      return {
+        ...state,
+        applications: { ...state.applications, ...action.payload.applications },
       };
     case actionTypes.ADD_APPLICATION:
       return {

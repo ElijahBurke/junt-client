@@ -10,6 +10,7 @@ import apiHelpers from '../../Helpers/Api/apiService';
 import actionCreators from '../../Redux/actionCreators';
 import UseNavigate from '../../Helpers/Hooks/UseNavigate';
 import UserLoggedInModal from './UserLoggedInModal/UserLoggedInModal';
+import dispatchHelpers from '../../Redux/dispatchHelpers';
 
 function LogIn() {
   const defaultState = {
@@ -59,12 +60,12 @@ function LogIn() {
         .then(R.compose(dispatch, actionCreators.setUser));
     } else {
       apiHelpers.postBody(formState, '/users/login')
-        .then(R.compose(dispatch, actionCreators.setUser));
+        .then(dispatchHelpers.handleLogin(dispatch));
     }
   };
 
   useEffect(() => {
-    if (user.name) setTimeout(navigate('./applications'), 2000);
+    if (user.name) setTimeout(navigate('applications'), 2000);
   }, [user]);
 
   return (

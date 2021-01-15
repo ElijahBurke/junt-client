@@ -47,6 +47,15 @@ const addTest = (test) => (dispatch) => R.compose(
   checkIfKeyAndIfNotAddArr('applicationIds'),
 )(test);
 
+const setTests = (tests) => (dispatch) => R.compose(
+  dispatch,
+  R.ifElse(
+    checkIfError,
+    createAction(actionTypes.SET_ERROR, 'error'),
+    createAction(actionTypes.SET_TESTS, 'tests'),
+  ),
+)(tests);
+
 const addApplication = (application) => (dispatch) => R.compose(
   dispatch,
   R.ifElse(
@@ -55,6 +64,15 @@ const addApplication = (application) => (dispatch) => R.compose(
     createAction(actionTypes.ADD_APPLICATION, 'application'),
   ),
 )(application);
+
+const setApplications = (applications) => (dispatch) => R.compose(
+  dispatch,
+  R.ifElse(
+    checkIfError,
+    createAction(actionTypes.SET_ERROR, 'error'),
+    createAction(actionTypes.SET_APPLICATIONS, 'applications'),
+  ),
+)(applications);
 
 const updateApplication = (application) => (dispatch) => R.compose(
   dispatch,
@@ -72,6 +90,8 @@ const actionCreators = {
   addTest,
   addApplication,
   updateApplication,
+  setTests,
+  setApplications,
 };
 
 export default actionCreators;
