@@ -1,6 +1,6 @@
 import React from 'react';
 import './Nav.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as R from 'ramda';
 import Button from '../Button/Button';
 import UseNavigate from '../../Helpers/Hooks/UseNavigate';
@@ -12,6 +12,7 @@ function Nav() {
   const navigate = UseNavigate();
   const width = GetScreenWidth();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   const setShowSideNavTrue = () => R.compose(dispatch, actionCreators.setShowSideNav)(true);
 
   return (
@@ -24,14 +25,17 @@ function Nav() {
           ? (
             <div className="nav-inner__nav-buttons">
               <div className="nav-buttons__button">
-                <Button text="Applications" borderless onClick={navigate('applications')} />
+                <Button text="Tests" borderless onClick={navigate('tests')} />
               </div>
               <div className="nav-buttons__button">
                 <Button text="Dashboard" borderless onClick={navigate('dashboard')} />
               </div>
+              {!user.name
+              && (
               <div className="nav-buttons__button">
                 <Button text="Log In" onClick={navigate('login')} />
               </div>
+              )}
             </div>
           )
           : (

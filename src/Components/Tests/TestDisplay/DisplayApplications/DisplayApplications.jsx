@@ -8,7 +8,9 @@ function DisplayApplications({ applicationIds }) {
   const applications = useSelector((state) => state.applications);
   return (
     <div className="DisplayApplications__display-applications">
-      {applicationIds.map((id) => <AppCard key={id} application={applications[id]} />)}
+      {
+      applicationIds.map((id) => <AppCard key={id} application={applications[id]} />)
+}
     </div>
   );
 }

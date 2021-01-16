@@ -4,7 +4,6 @@ const BASE_URL = 'http://localhost:3001';
 
 const defaultOptions = {
   credentials: 'include',
-  mode: 'cors',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
@@ -25,9 +24,25 @@ const postBody = R.curry((body, path) => fetchRequestWithDefaultsAndBaseUrl(path
   body: JSON.stringify(body),
 }));
 
+const deleteViaParam = R.curry((path, id) => fetchRequestWithDefaultsAndBaseUrl(`${path}/${id}`, {
+  method: 'DELETE',
+}));
+
+const checkAuth = () => fetchRequestWithDefaultsAndBaseUrl('/auth/check', {
+  method: 'GET',
+  credentials: 'include',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Credentials': 'true',
+  },
+});
+
 const apiHelpers = {
   fetchRequestWithDefaultsAndBaseUrl,
   postBody,
+  deleteViaParam,
+  checkAuth,
 };
 
 export default apiHelpers;

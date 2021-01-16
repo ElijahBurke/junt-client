@@ -60,12 +60,15 @@ function LogIn() {
         .then(R.compose(dispatch, actionCreators.setUser));
     } else {
       apiHelpers.postBody(formState, '/users/login')
-        .then(dispatchHelpers.handleLogin(dispatch));
+        .then((res) => {
+          console.log(res);
+          dispatchHelpers.handleLogin(dispatch)(res);
+        });
     }
   };
 
   useEffect(() => {
-    if (user.name) setTimeout(navigate('applications'), 2000);
+    if (user.name) setTimeout(navigate('tests'), 2000);
   }, [user]);
 
   return (

@@ -3,13 +3,16 @@
 import React, { useRef, useState } from 'react';
 import * as R from 'ramda';
 import './AppInfo.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import apiHelpers from '../../Helpers/Api/apiService';
 import actionCreators from '../../Redux/actionCreators';
 
-function AppInfo({ id }) {
-  const application = useSelector((state) => state.applications[id]);
+function AppInfo({ application }) {
+  const history = useHistory();
+  console.log(application);
   const [coverLetterState, setCoverLetterState] = useState(application.cover);
   const [noteState, setNoteState] = useState(application.notes);
   const dispatch = useDispatch();
@@ -28,15 +31,30 @@ function AppInfo({ id }) {
       .then(R.compose(dispatch, actionCreators.updateApplication));
   };
 
+  const deleteApplication = (app) => () => apiHelpers.deleteViaParam('/application/delete', app.id)
+    .then(() => {
+      R.compose(dispatch, actionCreators.deleteApplication)(app);
+      history.goBack();
+    });
+
   return (
     <div className="AppInfo__app-info">
       <div className="app-info__display">
         <div className="display__company">
-          <div>
-            Company Name:
+          <div className="company__info">
+            <div>
+              Company Name:
+            </div>
+            <div>
+              {application.company}
+            </div>
           </div>
-          <div>
-            {application.company}
+          <div className="company__time">
+            <span>Created:</span>
+            {' '}
+            <span>
+              {moment(application.createdAt).calendar()}
+            </span>
           </div>
         </div>
         <div className="display__role">
@@ -111,13 +129,30 @@ function AppInfo({ id }) {
             </button>
           </div>
         </div>
+        <div className="display__remove">
+          Remove This Application.
+          <button type="button" onClick={deleteApplication(application)}>
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
 AppInfo.propTypes = {
-  id: PropTypes.string.isRequired,
+  application: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    company: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    notes: PropTypes.string.isRequired,
+    interview: PropTypes.bool.isRequired,
+    rejected: PropTypes.bool.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default AppInfo;

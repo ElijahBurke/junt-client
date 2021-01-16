@@ -41,10 +41,18 @@ const handleApplication = (dispatch) => R.compose(
   R.reduce(reduceToObject, {}),
 );
 
-const handleLogin = (dispatch) => R.compose(
+const addUserSetTestsSetApplications = (dispatch) => R.compose(
   handleApplication(dispatch),
   handleTest(dispatch),
   handleUser(dispatch),
+);
+
+const handleLogin = (dispatch) => R.compose(
+  R.ifElse(
+    R.has('error'),
+    () => {},
+    addUserSetTestsSetApplications(dispatch),
+  ),
 );
 // later we might have to fix this so it only updates user after tests and applications done
 

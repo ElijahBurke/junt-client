@@ -83,6 +83,11 @@ const updateApplication = (application) => (dispatch) => R.compose(
   ),
 )(application);
 
+const deleteApplication = (application) => (dispatch) => R.compose(
+  dispatch,
+  createAction(actionTypes.DELETE_APPLICATION, 'application'),
+)(application);
+
 const actionCreators = {
   setShowSideNav,
   setUser,
@@ -92,6 +97,7 @@ const actionCreators = {
   updateApplication,
   setTests,
   setApplications,
+  deleteApplication,
 };
 
 export default actionCreators;

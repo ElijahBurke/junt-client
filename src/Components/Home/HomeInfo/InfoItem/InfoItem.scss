@@ -1,7 +1,7 @@
 @import '../../../../variables.scss';
 
 .InfoItem__info-item {
-  height: 100vh;
+  height: 85vh;
   @include flex-center;
   .info-item__inner-container {
     @include flex-center;

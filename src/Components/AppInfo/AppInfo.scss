@@ -10,12 +10,29 @@
     margin: 5% 0%;
     .display__company {
       margin: 2% 0;
+      display: flex;
+      justify-content: space-between;
       div {
         font-size: 2rem;
         color: $primary;
         text-transform: capitalize;
         &:nth-child(2) {
           color: lighten($primary, 30%);
+        }
+      }
+      .company__time {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        font-size: 1.2rem;
+        background: lighten($primary, 30%);
+        color: $text-light;
+        @include flex-center;
+        padding: 1% 2%;
+        border-radius: 3px;
+        span {
+          font-size: 1.2rem;
+          color: $text-light;
         }
       }
     }
@@ -105,6 +122,27 @@
             outline: none;
           }
         }
+      }
+    }
+    .display__remove {
+      margin: 3% 0%;
+      @include flex-center;
+      flex-direction: column;
+      font-size: 1.6rem;
+      color: $primary;
+      button {
+          padding: 1.5% 5%;
+          margin: 2% 0% 0% 0%;
+          min-width: 120px;
+          font-size: 1.6rem;
+          background: lighten($rejected, 30%);
+          border: 1px solid $text-light;
+          color: $text-light;
+          border-radius: 2px;
+          transition: all 0.5s;
+          &:focus {
+            outline: none;
+          }
       }
     }
   }

@@ -1,5 +1,9 @@
+/* eslint-disable eqeqeq */
+import * as R from 'ramda';
 import actionTypes from './actionTypes';
 import initialState from './initialState';
+
+const softEquals = R.curry((x, y) => x == y);
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -52,6 +56,36 @@ const reducer = (state = initialState, action) => {
         applications: {
           ...state.applications,
           [action.payload.application.id]: action.payload.application,
+        },
+      };
+    case actionTypes.DELETE_APPLICATION:
+      console.log('HELLO');
+      console.log('action', action);
+      console.log({
+        ...state.tests[action.payload.application.testId],
+        applicationIds: R.filter(
+          R.complement(softEquals)(action.payload.application.id),
+          state.tests[action.payload.application.testId].applicationIds,
+        ),
+      });
+      return {
+        ...state,
+        applications: R.filter(
+          R.compose(
+            R.complement(softEquals)(action.payload.application.id),
+            R.prop('id'),
+          ),
+          state.applications,
+        ),
+        tests: {
+          ...state.tests,
+          [action.payload.application.testId]: {
+            ...state.tests[action.payload.application.testId],
+            applicationIds: R.filter(
+              R.complement(softEquals)(action.payload.application.id),
+              state.tests[action.payload.application.testId].applicationIds,
+            ),
+          },
         },
       };
     default:

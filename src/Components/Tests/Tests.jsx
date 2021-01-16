@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './Applications.scss';
+import './Tests.scss';
 import * as R from 'ramda';
 import AddTest from './AddTest/AddTest';
 import TestDisplay from './TestDisplay/TestDisplay';
 
-function Applications() {
+function Tests() {
   const [user, tests] = useSelector((state) => [state.user, state.tests]);
   const displayTests = R.curry(
     (testObj, testId) => <TestDisplay key={testId} test={testObj[testId]} />,
@@ -19,8 +19,8 @@ function Applications() {
     () => {},
   );
   return (
-    <div className="Applications__applications">
-      <div className="applications__inner-container">
+    <div className="Tests__tests">
+      <div className="tests__inner-container">
         {!user.name
         && (
         <div className="inner-container__not-logged-in">
@@ -34,4 +34,4 @@ function Applications() {
   );
 }
 
-export default Applications;
+export default Tests;

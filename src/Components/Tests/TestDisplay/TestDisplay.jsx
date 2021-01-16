@@ -42,10 +42,12 @@ function TestDisplay({ test }) {
 }
 
 TestDisplay.propTypes = {
-  test: PropTypes.objectOf({
+  test: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     desc: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
+    applicationIds: PropTypes.arrayOf(PropTypes.numbers),
   }).isRequired,
 };
 

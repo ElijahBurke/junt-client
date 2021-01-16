@@ -9,7 +9,7 @@ import actionCreators from '../../../Redux/actionCreators';
 import Rhelpers from '../../../Helpers/Ramda/Rhelpers';
 
 function SideNav() {
-  const showSideNav = useSelector((state) => state.showSideNav);
+  const [showSideNav, user] = useSelector((state) => [state.showSideNav, state.user]);
   const [eventListenerFunc, setEventListenerFunc] = useState(null);
 
   const navigate = UseNavigate();
@@ -55,14 +55,17 @@ function SideNav() {
     <div className="SideNav__side-nav" ref={sideNavRef} style={{ opacity: `${showSideNav ? 1 : 0}`, transform: `translateX(${showSideNav ? 0 : '-300px'})` }}>
       <div className="side-nav__nav-buttons">
         <div className="nav-buttons__button">
-          <Button text="Applications" borderless onClick={navigateAndSetShowSideNavFalse('applications')} />
+          <Button text="Tests" borderless onClick={navigateAndSetShowSideNavFalse('tests')} />
         </div>
         <div className="nav-buttons__button">
           <Button text="Dashboard" borderless onClick={navigateAndSetShowSideNavFalse('dashboard')} />
         </div>
+        {!user.name
+        && (
         <div className="nav-buttons__button">
           <Button text="Log In" borderless onClick={navigateAndSetShowSideNavFalse('login')} />
         </div>
+        )}
       </div>
       <button className="side-nav__close" type="button" ref={closeButtonRef}>
         X

@@ -23,7 +23,7 @@ function InfoItem({ data }) {
 }
 
 InfoItem.propTypes = {
-  data: PropTypes.objectOf({
+  data: PropTypes.shape({
     title: PropTypes.string,
     body: PropTypes.string,
     img: PropTypes.string,

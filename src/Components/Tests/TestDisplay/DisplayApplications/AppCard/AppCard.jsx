@@ -9,6 +9,7 @@ import apiService from '../../../../../Helpers/Api/apiService';
 import actionCreators from '../../../../../Redux/actionCreators';
 
 function AppCard({ application }) {
+  console.log(application);
   const navigate = UseNavigate();
   const dispatch = useDispatch();
 
@@ -42,7 +43,10 @@ function AppCard({ application }) {
 }
 
 AppCard.propTypes = {
-  application: PropTypes.objectOf({
+  application: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    interview: PropTypes.bool.isRequired,
+    rejected: PropTypes.bool.isRequired,
     company: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,

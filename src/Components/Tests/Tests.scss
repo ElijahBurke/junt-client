@@ -1,11 +1,11 @@
-.Applications__applications {
+.Tests__tests {
   display: flex;
   min-height: 82vh;
   justify-content: center;
   & section {
     margin: 4% 0%;
   }
-  .applications__inner-container {
+  .tests__inner-container {
     margin: 3% 0%;
     width: 90%;
     .inner-container__not-logged-in {
