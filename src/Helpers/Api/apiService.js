@@ -38,11 +38,14 @@ const checkAuth = () => fetchRequestWithDefaultsAndBaseUrl('/auth/check', {
   },
 });
 
+const logout = () => fetchRequestWithDefaultsAndBaseUrl('/logout');
+
 const apiHelpers = {
   fetchRequestWithDefaultsAndBaseUrl,
   postBody,
   deleteViaParam,
   checkAuth,
+  logout,
 };
 
 export default apiHelpers;

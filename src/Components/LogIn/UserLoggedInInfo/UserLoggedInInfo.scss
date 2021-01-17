@@ -1,0 +1,20 @@
+@import '../../../variables.scss';
+
+  .UserLoggedInInfo__modal {
+    @include flex-center;
+    flex-direction: column;
+    .modal__title {
+      font-size: 2rem;
+      text-align: center;
+      color: $text-light;
+      margin: 5% 0%;
+      width: 100%;
+    }
+    .modal__sub-title {
+      text-align: center;
+      color: $text-light;
+      font-size: 1.6rem;
+      margin: 5% 0%;
+      width: 100%;
+    }
+  }

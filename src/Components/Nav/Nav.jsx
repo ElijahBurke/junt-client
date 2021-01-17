@@ -28,6 +28,9 @@ function Nav() {
                 <Button text="Tests" borderless onClick={navigate('tests')} />
               </div>
               <div className="nav-buttons__button">
+                <Button text="Applications" borderless onClick={navigate('applications')} />
+              </div>
+              <div className="nav-buttons__button">
                 <Button text="Dashboard" borderless onClick={navigate('dashboard')} />
               </div>
               {!user.name

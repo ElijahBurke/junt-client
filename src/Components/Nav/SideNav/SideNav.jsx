@@ -7,6 +7,7 @@ import Button from '../../Button/Button';
 import UseNavigate from '../../../Helpers/Hooks/UseNavigate';
 import actionCreators from '../../../Redux/actionCreators';
 import Rhelpers from '../../../Helpers/Ramda/Rhelpers';
+import apiHelpers from '../../../Helpers/Api/apiService';
 
 function SideNav() {
   const [showSideNav, user] = useSelector((state) => [state.showSideNav, state.user]);
@@ -51,11 +52,17 @@ function SideNav() {
     return () => window.removeEventListener('click', eventListenerFunc);
   }, [eventListenerFunc, showSideNav]);
 
+  const logout = () => apiHelpers.logout()
+    .then(R.compose(navigateAndSetShowSideNavFalse('login'), dispatch, actionCreators.logoutUser));
+
   return (
     <div className="SideNav__side-nav" ref={sideNavRef} style={{ opacity: `${showSideNav ? 1 : 0}`, transform: `translateX(${showSideNav ? 0 : '-300px'})` }}>
       <div className="side-nav__nav-buttons">
         <div className="nav-buttons__button">
           <Button text="Tests" borderless onClick={navigateAndSetShowSideNavFalse('tests')} />
+        </div>
+        <div className="nav-buttons__applications">
+          <Button text="Applications" borderless onClick={navigateAndSetShowSideNavFalse('applications')} />
         </div>
         <div className="nav-buttons__button">
           <Button text="Dashboard" borderless onClick={navigateAndSetShowSideNavFalse('dashboard')} />
@@ -64,6 +71,12 @@ function SideNav() {
         && (
         <div className="nav-buttons__button">
           <Button text="Log In" borderless onClick={navigateAndSetShowSideNavFalse('login')} />
+        </div>
+        )}
+        {user.name
+        && (
+        <div className="nav-buttons__button">
+          <Button text="Log Out" borderless onClick={logout} />
         </div>
         )}
       </div>

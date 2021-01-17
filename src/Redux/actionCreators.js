@@ -27,10 +27,14 @@ const setUser = (user) => (dispatch) => R.compose(
   ),
 )(user);
 
-// const checkIfKeyAndIfNotAddArr = R.curry((obj, key) => {
-//   if (!obj[key]) obj[key] = [];
-//   return obj;
-// });
+const logoutUser = (user) => (dispatch) => R.compose(
+  dispatch,
+  R.ifElse(
+    checkIfError,
+    createAction(actionTypes.SET_ERROR, 'error'),
+    createAction(actionTypes.LOGOUT_USER, 'user'),
+  ),
+)(user);
 
 const checkIfKeyAndIfNotAddArr = (key) => R.when(
   R.complement(R.has)(key),
@@ -55,6 +59,20 @@ const setTests = (tests) => (dispatch) => R.compose(
     createAction(actionTypes.SET_TESTS, 'tests'),
   ),
 )(tests);
+
+const updateTest = (test) => (dispatch) => R.compose(
+  dispatch,
+  R.ifElse(
+    checkIfError,
+    createAction(actionTypes.SET_ERROR, 'error'),
+    createAction(actionTypes.UPDATE_TEST, 'test'),
+  ),
+)(test);
+
+const deleteTest = (testId) => (dispatch) => R.compose(
+  dispatch,
+  createAction(actionTypes.DELETE_TEST, 'testId'),
+)(testId);
 
 const addApplication = (application) => (dispatch) => R.compose(
   dispatch,
@@ -91,8 +109,11 @@ const deleteApplication = (application) => (dispatch) => R.compose(
 const actionCreators = {
   setShowSideNav,
   setUser,
+  logoutUser,
   setError,
   addTest,
+  updateTest,
+  deleteTest,
   addApplication,
   updateApplication,
   setTests,

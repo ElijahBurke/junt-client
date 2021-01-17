@@ -9,7 +9,7 @@
   border-radius: 5px;
   padding: 5px;
   margin: 1%;
-  height: 120px;
+  height: 100px;
   &.interview {
     background: $interview;
   }
@@ -19,17 +19,17 @@
   @media only screen and (min-width: 500px) {
     margin: 1%;
     width: 48%;
-    height: 150px;
+    height: 120px;
   }
   @media only screen and (min-width: 900px) {
     margin: 0.8%;
     width: 31%;
-    height: 180px;
+    height: 140px;
   }
   @media only screen and (min-width: 1200px) {
     margin: 0.6%;
     width: 23.5%;
-    height: 200px;
+    height: 160px;
   }
   div,
   a {

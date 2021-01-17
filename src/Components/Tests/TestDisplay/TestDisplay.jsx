@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import './TestDisplay.scss';
 import PropTypes from 'prop-types';
-import AddingAppModal from './AddingAppModal/AddingAppModal';
+import AddingAppForm from './AddingAppForm/AddingAppForm';
 import DisplayApplications from './DisplayApplications/DisplayApplications';
-import DownArrow from '../AddTest/DownArrow.svg';
+import UseNavigate from '../../../Helpers/Hooks/UseNavigate';
+import FullPageModal from '../../FullPageModal/FullPageModal';
+
+const AddingAppModal = FullPageModal(AddingAppForm);
 
 function TestDisplay({ test }) {
   const [seeMore, setSeeMore] = useState(true);
   const [addingApplication, setAddingApplication] = useState(false);
+  const navigate = UseNavigate();
   return (
     <>
       <section className="TestDisplay__test-display">
@@ -25,8 +29,16 @@ function TestDisplay({ test }) {
         {test.applicationIds.length > 0 && seeMore
           && <DisplayApplications applicationIds={test.applicationIds} />}
         <div className="TestDisplay__see-more">
-          <button className={seeMore ? 'rotated' : undefined} type="button" onClick={() => setSeeMore((curr) => !curr)}>
-            <img src={DownArrow} alt="arrow down" />
+          {test.applicationIds.length > 0
+          && (
+          <button type="button" onClick={() => setSeeMore((curr) => !curr)}>
+            See
+            {' '}
+            { seeMore ? 'less' : 'more' }
+          </button>
+          )}
+          <button type="button" onClick={navigate(`test/${test.id}`)}>
+            View Test
           </button>
         </div>
       </section>
@@ -47,7 +59,7 @@ TestDisplay.propTypes = {
     name: PropTypes.string.isRequired,
     desc: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
-    applicationIds: PropTypes.arrayOf(PropTypes.numbers),
+    applicationIds: PropTypes.arrayOf(PropTypes.number).isRequired,
   }).isRequired,
 };
 

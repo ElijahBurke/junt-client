@@ -9,7 +9,7 @@ const CheckAuthenticated = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     apiHelpers.checkAuth()
-      .then(dispatchHelpers.handleLogin(dispatch))
+      .then((res) => (res.message === 'Not authenticated' ? setCheckingAuth(false) : dispatchHelpers.handleLogin(dispatch)(res)))
       .then(() => setCheckingAuth(false));
   }, []);
 

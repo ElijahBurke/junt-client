@@ -9,8 +9,11 @@ import LogInImg from './LogInImg.svg';
 import apiHelpers from '../../Helpers/Api/apiService';
 import actionCreators from '../../Redux/actionCreators';
 import UseNavigate from '../../Helpers/Hooks/UseNavigate';
-import UserLoggedInModal from './UserLoggedInModal/UserLoggedInModal';
+import UserLoggedInInfo from './UserLoggedInInfo/UserLoggedInInfo';
 import dispatchHelpers from '../../Redux/dispatchHelpers';
+import FullPageModal from '../FullPageModal/FullPageModal';
+
+const UserLoggedInModal = FullPageModal(UserLoggedInInfo);
 
 function LogIn() {
   const defaultState = {
@@ -60,16 +63,15 @@ function LogIn() {
         .then(R.compose(dispatch, actionCreators.setUser));
     } else {
       apiHelpers.postBody(formState, '/users/login')
-        .then((res) => {
-          console.log(res);
-          dispatchHelpers.handleLogin(dispatch)(res);
-        });
+        .then(dispatchHelpers.handleLogin(dispatch));
     }
   };
 
-  useEffect(() => {
-    if (user.name) setTimeout(navigate('tests'), 2000);
-  }, [user]);
+  useEffect(R.ifElse(
+    () => R.identity(user.name),
+    () => setTimeout(navigate('tests'), 2000),
+    () => {},
+  ), [user]);
 
   return (
     <div className="LogIn__log-in">
@@ -93,7 +95,7 @@ function LogIn() {
         <div className="inner-container__error">
           {error}
         </div>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} autoComplete="off">
           <label className="transition" style={isLoggingIn ? loggingInStyles : {}}>
             Name:
             <input

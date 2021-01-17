@@ -1,87 +1,69 @@
 @import '../../variables.scss';
-// .AppInfo__app-info {
-//   min-height: 82vh;
-//   @include flex-center;
-  .app-info__display {
-    min-height: 82vh;
-    @include greyMiddleBox;
-    .display__company {
-      margin: 2% 0;
-      display: flex;
-      justify-content: space-between;
-      div {
-        font-size: 2rem;
-        color: $primary;
-        text-transform: capitalize;
-        &:nth-child(2) {
-          color: lighten($primary, 30%);
-        }
-      }
-      .company__time {
-        display: flex;
-        flex-direction: column;
-        text-align: right;
-        font-size: 1.2rem;
-        background: lighten($primary, 30%);
-        color: $text-light;
-        @include flex-center;
-        padding: 1% 2%;
-        border-radius: 3px;
-        span {
-          font-size: 1.2rem;
-          color: $text-light;
-        }
-      }
-    }
-    .display__role {
+.TestInfo__test-info {
+  @include greyMiddleBox;
+  min-height: 82vh;
+  .test-info__name {
     margin: 2% 0;
-      div {
-        font-size: 2rem;
-        text-transform: capitalize;
-        color: $primary;
-        &:nth-child(2) {
-          color: lighten($primary, 30%);
-        }
-      }
-    }
-    .display__url {
-    margin: 2% 0;
-      div {
-        font-size: 1.6rem;
-        color: $primary;
-        a {
-        font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    div {
+      font-size: 2rem;
+      color: $primary;
+      text-transform: capitalize;
+      &:nth-child(2) {
         color: lighten($primary, 30%);
-        }
       }
     }
-    .display__status {
+    .name__time {
+      flex-direction: column;
+      background: lighten($primary, 30%);
+      @include flex-center;
+      padding: 1% 2%;
+      border-radius: 3px;
+      span {
+        font-size: 1.2rem;
+        color: $text-light;
+        text-align: center;
+      }
+    }
+  }
+  .test-info__description {
     margin: 2% 0;
       div {
-        font-size: 1.6rem;
+        font-size: 2rem;
+        text-transform: capitalize;
         color: $primary;
-        span {
+        &:nth-child(2) {
           font-size: 1.6rem;
           color: lighten($primary, 30%);
         }
       }
-      .status__buttons {
-        button {
-          border: none;
-          background: lighten($primary, 30%);
-          border-radius: 50%;
-          padding: 5px;
-          font-size: 2rem;
-          margin: 1% 2% 0% 0%;
-          &:focus {
-            outline: none;
-          }
+    }
+    .test-info__app-info {
+      font-size: 2rem;
+      color: $primary;
+    }
+    table {
+      margin: 2% 0%;
+      border-spacing: 0px;
+      th, td {
+        border: 1px solid black;
+        margin: 0;
+        padding: 3% 5%;
+        font-weight: 400;
+        text-align: center;
+        font-size: 1.2rem;
+        color: lighten($primary, 20%);
+        &:nth-child(even) {
+          background-color: #eee;
+        }
+        &:nth-child(odd) {
+          background-color: rgb(200, 200, 200);
         }
       }
     }
-    .display__cover,
-    .display__notes {
-    margin: 2% 0;
+    .test-info__cover {
+      margin: 2% 0;
       div {
         font-size: 1.6rem;
         color: $primary;
@@ -121,7 +103,7 @@
         }
       }
     }
-    .display__remove {
+    .test-info__remove {
       margin: 3% 0%;
       @include flex-center;
       flex-direction: column;
@@ -142,5 +124,4 @@
           }
       }
     }
-  }
-// }
+}

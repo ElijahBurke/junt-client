@@ -24,7 +24,7 @@ function Tests() {
         {!user.name
         && (
         <div className="inner-container__not-logged-in">
-          Make Sure To Log In To Save Your Progress
+          Log In To Begin Adding Tests
         </div>
         )}
         <AddTest />

@@ -1,0 +1,33 @@
+@import '../../../variables.scss';
+.DisplayApplications__section {
+  margin: 2% 0%;
+  .section__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px lighten($primary, 20%);
+    border-bottom-style: solid;
+    padding-bottom: 2%; 
+    .title__main {
+      font-size: 2rem;
+      color: lighten($primary, 20%);
+      text-transform: capitalize;
+    }
+    .title__button {
+      color: lighten($primary, 20%);
+      border: 1px solid lighten($primary, 20%);
+      font-size: 1.6rem;
+      padding: 2% 4%;
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+  .section__applications {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

@@ -1,8 +1,6 @@
 @import '../../../variables.scss';
 .TestDisplay__test-display {
-  background: $background-two;
-  border-radius: 5px;
-  padding: 1.5% 3%;
+  @include greyMiddleBox;
   .add-test__header {
     display: flex;
     justify-content: space-between;
@@ -45,19 +43,21 @@
     }
   }
   .TestDisplay__see-more {
+    margin: 1% 0%;
     @include flex-center;
     button {
       border: none;
       background: none;
-      width: 2%;
-      &.rotated {
-        transform: rotate(180deg);
-      }
+      margin: 0% 3%;
+      font-size: 1.6rem;
+      color: lighten($primary, 20%);
+      padding: 1% 2%;
+      border: solid 1px lighten($primary, 20%);
+      // &.rotated {
+      //   transform: rotate(180deg);
+      // }
       &:focus {
         outline: none;
-      }
-      img {
-        animation: scaling 3s ease infinite;
       }
     }
   }

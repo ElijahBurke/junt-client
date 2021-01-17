@@ -9,7 +9,6 @@ import apiService from '../../../../../Helpers/Api/apiService';
 import actionCreators from '../../../../../Redux/actionCreators';
 
 function AppCard({ application }) {
-  console.log(application);
   const navigate = UseNavigate();
   const dispatch = useDispatch();
 
@@ -24,11 +23,11 @@ function AppCard({ application }) {
       <div className="app-card__role">
         {application.role}
       </div>
-      <div className="app-card__url">
+      {/* <div className="app-card__url">
         <a href={application.url} rel="noreferrer" target="_blank">
           Job Description
         </a>
-      </div>
+      </div> */}
       <div className="app-card__buttons">
         <button type="button" onClick={updateStatus({ rejected: true, interview: false })}>👎</button>
         <button type="button" onClick={navigate(`application/${application.id}`)}>

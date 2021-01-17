@@ -1,0 +1,118 @@
+@import '../../../../variables.scss';
+.AddingAppForm__modal {
+  height: 98%;
+  overflow-y: scroll;
+  @include flex-center;
+  &::-webkit-scrollbar {
+    display: none;
+} 
+  form {
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+      margin: 2% 0%;
+      height: 100%;
+    .form__button {
+          height: 100%;
+          font-size: 1.6rem;
+          border: 1.2px solid $text-light;
+          color: $text-light;
+          border-radius: 2px;
+          transition: all 0.2s;
+          background: none;
+          width: 30%;
+          min-width: 120px;
+          cursor: pointer;
+          align-self: center;
+          &:hover {
+            transform: scale(1.05);
+        }
+    }
+    label {
+        color: $text-light;
+        display: flex;
+        flex-direction: column;
+        margin: 8px 0%;
+        font-size: 1.4rem;
+        input {
+          margin: 5px 0%;
+          font-size: 1.2rem;
+          padding: 0px 3px;
+      }
+      textarea {
+          font-size: 1.2rem;
+          margin: 1% 0%;
+          min-height: 150px;
+          padding: 0px 3px;
+      }
+    }
+  }
+
+.modal__job-added {
+    height: 90%;
+    width: 80%; 
+    & > * {
+      color: $text-light;
+  }
+  .job-added__title {
+      font-size: 2rem;
+      width: 100%;
+      text-align: center;
+  }
+  textarea {
+      background: $primary;
+      width: 100%;
+      overflow-y: scroll;
+      height: 80%;
+      font-size: 1.2rem;
+      padding: 2%;
+    &::-webkit-scrollbar {
+      display: none;
+  }
+  }
+  .job-added__buttons {
+      @include flex-center;
+      button {
+      width: 20%;
+      min-width: 100px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+      align-self: center;
+      height: 100%;
+      font-size: 1.6rem;
+      border: 1.2px solid $text-light;
+      margin: 0px 5px;
+        &:hover {
+          transform: scale(1.05);
+          width: 20%;
+          min-width: 100px;
+          cursor: pointer;
+          border-radius: 2px;
+          transition: all 0.2s;
+          align-self: center;
+          height: 100%;
+          font-size: 1.6rem;
+          border: 1.2px solid $text-light;
+      }
+    }
+    & button:nth-child(1) {
+          color: $text-light;
+          background: none;
+    }
+    & button:nth-child(2) {
+          background: $text-light;
+          color: $primary;
+          border-radius: 2px;
+          transition: all 0.2s;
+          width: 20%;
+          min-width: 100px;
+          cursor: pointer;
+          align-self: center;
+          &:hover {
+            transform: scale(1.05);
+        }
+    }
+  }
+}
+}

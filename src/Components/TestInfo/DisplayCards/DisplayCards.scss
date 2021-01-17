@@ -1,0 +1,13 @@
+@import '../../../variables.scss';
+.DisplayCards__app-cards {
+  .app-cards__title {
+    font-size: 2rem;
+    color: lighten($primary, 20%);
+    border: 1px lighten($primary, 20%);
+    border-bottom-style: solid;
+  }
+  .app-cards__display {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

@@ -11,3 +11,10 @@ $rejected: rgb(122, 0, 0);
   align-items: center;
   justify-content: center;
 }
+
+@mixin greyMiddleBox {
+  background: $background-two;
+  border-radius: 5px;
+  padding: 1.5% 3%;
+  margin: 2% 5%;
+}

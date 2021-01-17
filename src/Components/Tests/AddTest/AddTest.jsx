@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import * as R from 'ramda';
+import { useSelector } from 'react-redux';
 import DownArrow from './DownArrow.svg';
 import './AddTest.scss';
-import AddTestModal from './AddTestModal/AddTestModal';
+import AddTestModalInfo from './AddTestModalInfo/AddTestModalInfo';
+import FullPageModal from '../../FullPageModal/FullPageModal';
 
 function AddTest() {
-  const [seeMore, setSeeMore] = useState(true);
+  const AddTestModal = FullPageModal(AddTestModalInfo);
+  const [tests, user] = useSelector((state) => [state.tests, state.user]);
+  const [seeMore, setSeeMore] = useState(R.isEmpty(tests));
   const [showAddTest, setShowAddTest] = useState(false);
   return (
     <>
@@ -14,9 +19,12 @@ function AddTest() {
             A/B Testing
           </div>
           <div className="header__add">
+            {user.name
+            && (
             <button type="button" onClick={() => setShowAddTest(true)}>
               Add Test
             </button>
+            )}
           </div>
         </div>
         {seeMore

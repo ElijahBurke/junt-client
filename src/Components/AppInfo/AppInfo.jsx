@@ -12,7 +12,6 @@ import actionCreators from '../../Redux/actionCreators';
 
 function AppInfo({ application }) {
   const history = useHistory();
-  console.log(application);
   const [coverLetterState, setCoverLetterState] = useState(application.cover);
   const [noteState, setNoteState] = useState(application.notes);
   const dispatch = useDispatch();
@@ -38,103 +37,108 @@ function AppInfo({ application }) {
     });
 
   return (
-    <div className="AppInfo__app-info">
-      <div className="app-info__display">
-        <div className="display__company">
-          <div className="company__info">
-            <div>
-              Company Name:
-            </div>
-            <div>
-              {application.company}
-            </div>
-          </div>
-          <div className="company__time">
-            <span>Created:</span>
-            {' '}
-            <span>
-              {moment(application.createdAt).calendar()}
-            </span>
-          </div>
-        </div>
-        <div className="display__role">
+    <div className="app-info__display">
+      <div className="display__company">
+        <div className="company__info">
           <div>
-            Job Role:
+            Company Name:
           </div>
           <div>
-            {application.role}
+            {application.company}
           </div>
         </div>
-        <div className="display__url">
-          <div>
-            You Can Find A Link To The Job Description
-            {' '}
-            <a href={application.url} rel="noreferrer" target="_blank">Here.</a>
-          </div>
+        <div className="company__time">
+          <span>Created:</span>
+          {' '}
+          <span>
+            {moment(application.createdAt).startOf('hour').fromNow()}
+          </span>
         </div>
-        <div className="display__status">
-          <div>
-            Currently, you have
-            {' '}
-            <span>
-              {application.interview ? 'been offered an interview' : application.rejected ? 'been rejected' : 'applied'}
-            </span>
-            {' '}
-            for this position. Update your status:
-          </div>
-          <div className="status__buttons">
-            <button type="button" onClick={updateApplicationThroughAPI({ rejected: !application.rejected, interview: false })}>👎</button>
-            <button type="button" onClick={updateApplicationThroughAPI({ rejected: false, interview: !application.interview })}>👍</button>
-          </div>
+      </div>
+      <div className="display__role">
+        <div>
+          Job Role:
         </div>
-        <div className="display__cover">
-          <div>
-            Here is the cover letter you used:
-          </div>
-          <textarea
-            type="text"
-            name="updated cover letter"
-            required
-            value={coverLetterState}
-            ref={updatedCoverLetterRef}
-            onChange={(e) => setCoverLetterState(e.target.value)}
-          />
-          <div className="cover__buttons">
-            <button type="button" onClick={updateApplicationThroughAPI({ cover: coverLetterState })}>
-              Save
-            </button>
-            <button type="button" onClick={copyToClipboard(updatedCoverLetterRef)}>
-              Copy
-            </button>
-          </div>
+        <div>
+          {application.role}
         </div>
-        <div className="display__notes">
-          <div>
-            Here Are Your Notes For This Application:
-          </div>
-          <textarea
-            type="text"
-            name="notes"
-            required
-            value={noteState}
-            ref={noteRef}
-            onChange={(e) => setNoteState(e.target.value)}
-          />
-          <div className="notes__buttons">
-            <button type="button" onClick={updateApplicationThroughAPI({ notes: noteState })}>
-              Save
-            </button>
-            <button type="button" onClick={copyToClipboard(noteRef)}>
-              Copy
-            </button>
-          </div>
+      </div>
+      <div className="display__url">
+        <div>
+          You Can Find A Link To The Job Description
+          {' '}
+          <a
+            href={application.url.includes('https://') ? application.url : `https://${application.url}`}
+            rel="noreferrer"
+            target="_blank"
+          >
+            Here.
+
+          </a>
         </div>
-        <div className="display__remove">
-          Remove This Application.
-          <button type="button" onClick={deleteApplication(application)}>
-            Delete
+      </div>
+      <div className="display__status">
+        <div>
+          Currently, you have
+          {' '}
+          <span>
+            {application.interview ? 'been offered an interview' : application.rejected ? 'been rejected' : 'applied'}
+          </span>
+          {' '}
+          for this position. Update your status:
+        </div>
+        <div className="status__buttons">
+          <button type="button" onClick={updateApplicationThroughAPI({ rejected: !application.rejected, interview: false })}>👎</button>
+          <button type="button" onClick={updateApplicationThroughAPI({ rejected: false, interview: !application.interview })}>👍</button>
+        </div>
+      </div>
+      <div className="display__cover">
+        <div>
+          Here is the cover letter you used:
+        </div>
+        <textarea
+          type="text"
+          name="updated cover letter"
+          required
+          value={coverLetterState}
+          ref={updatedCoverLetterRef}
+          onChange={(e) => setCoverLetterState(e.target.value)}
+        />
+        <div className="cover__buttons">
+          <button type="button" onClick={updateApplicationThroughAPI({ cover: coverLetterState })}>
+            Save
+          </button>
+          <button type="button" onClick={copyToClipboard(updatedCoverLetterRef)}>
+            Copy
           </button>
         </div>
+      </div>
+      <div className="display__notes">
+        <div>
+          Here Are Your Notes For This Application:
+        </div>
+        <textarea
+          type="text"
+          name="notes"
+          required
+          value={noteState}
+          ref={noteRef}
+          onChange={(e) => setNoteState(e.target.value)}
+        />
+        <div className="notes__buttons">
+          <button type="button" onClick={updateApplicationThroughAPI({ notes: noteState })}>
+            Save
+          </button>
+          <button type="button" onClick={copyToClipboard(noteRef)}>
+            Copy
+          </button>
+        </div>
+      </div>
+      <div className="display__remove">
+        Remove This Application.
+        <button type="button" onClick={deleteApplication(application)}>
+          Delete
+        </button>
       </div>
     </div>
   );

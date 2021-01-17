@@ -11,6 +11,15 @@ const reducer = (state = initialState, action) => {
       return { ...state, showSideNav: action.payload.showSideNav };
     case actionTypes.SET_USER:
       return { ...state, user: { ...state.user, ...action.payload.user } };
+    case actionTypes.LOGOUT_USER:
+      return {
+        ...state,
+        user: {
+          id: 0,
+          name: false,
+          email: false,
+        },
+      };
     case actionTypes.SET_ERROR:
       return { ...state, error: action.payload.error.error };
     case actionTypes.SET_TESTS:
@@ -50,6 +59,19 @@ const reducer = (state = initialState, action) => {
           },
         },
       };
+    case actionTypes.UPDATE_TEST:
+      console.log(action.payload.test.id);
+      console.log(action.payload.test);
+      return {
+        ...state,
+        tests: {
+          ...state.tests,
+          [action.payload.test.id]: {
+            applicationIds: state.tests[action.payload.test.id].applicationIds,
+            ...action.payload.test,
+          },
+        },
+      };
     case actionTypes.UPDATE_APPLICATION:
       return {
         ...state,
@@ -58,16 +80,25 @@ const reducer = (state = initialState, action) => {
           [action.payload.application.id]: action.payload.application,
         },
       };
-    case actionTypes.DELETE_APPLICATION:
-      console.log('HELLO');
-      console.log('action', action);
-      console.log({
-        ...state.tests[action.payload.application.testId],
-        applicationIds: R.filter(
-          R.complement(softEquals)(action.payload.application.id),
-          state.tests[action.payload.application.testId].applicationIds,
+    case actionTypes.DELETE_TEST:
+      return {
+        ...state,
+        tests: R.filter(
+          R.compose(
+            R.complement(softEquals)(action.payload.testId),
+            R.prop('id'),
+          ),
+          state.tests,
         ),
-      });
+        applications: R.filter(
+          R.compose(
+            R.complement(softEquals)(action.payload.testId),
+            R.prop('testId'),
+          ),
+          state.applications,
+        ),
+      };
+    case actionTypes.DELETE_APPLICATION:
       return {
         ...state,
         applications: R.filter(
