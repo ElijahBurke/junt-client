@@ -120,7 +120,7 @@ function AddingAppForm({ cover, idFromTest, setAddingApplication }) {
                 required
                 value={formState.url}
                 onChange={onChange(setFormState, 'url')}
-                placeholder="http://www.jobspec.com"
+                placeholder="https://www.jobspec.com"
               />
             </label>
             <label>

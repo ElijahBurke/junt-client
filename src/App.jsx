@@ -23,7 +23,7 @@ function App() {
     <>
       <div className="nav-buffer" />
       <Nav />
-      { width <= 650 && <SideNav /> }
+      { width <= 875 && <SideNav /> }
       {checkingAuth
         ? <div className="checking" />
         : (

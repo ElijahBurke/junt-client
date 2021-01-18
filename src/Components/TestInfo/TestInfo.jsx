@@ -46,10 +46,7 @@ function TestInfo({ test }) {
   const updateTestThroughAPI = (toUpdate) => (e) => {
     e.preventDefault();
     apiHelpers.postBody({ testId: test.id, toUpdate }, '/test/update')
-      .then(((res) => {
-        console.log(res);
-        R.compose(dispatch, actionCreators.updateTest)(res);
-      }));
+      .then(R.compose(dispatch, actionCreators.updateTest));
   };
 
   const deleteTest = (testId) => () => apiHelpers.deleteViaParam('/test/delete', testId)
@@ -111,21 +108,6 @@ function TestInfo({ test }) {
         {` ${test.applicationIds.length} ` }
         Jobs Using This Test
       </div>
-      {test.applicationIds.length > 0
-      && (
-      <table>
-        <tr>
-          <th>No Response</th>
-          <th>Interview</th>
-          <th>Rejected</th>
-        </tr>
-        <tr>
-          <td>{appsSorted.applied.length}</td>
-          <td>{appsSorted.interview.length}</td>
-          <td>{appsSorted.rejected.length}</td>
-        </tr>
-      </table>
-      )}
       { appsSorted.applied.length > 0
       && <DisplayCards title="No Response" applications={appsSorted.applied} />}
       { appsSorted.interview.length > 0

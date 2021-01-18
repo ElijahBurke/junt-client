@@ -150,7 +150,7 @@ function LogIn() {
       )}
       {user.name
       && (
-      <UserLoggedInModal user={user} />
+      <UserLoggedInModal cb={navigate('tests')} user={user} />
       )}
     </div>
   );

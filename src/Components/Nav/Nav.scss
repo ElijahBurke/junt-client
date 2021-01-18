@@ -21,7 +21,6 @@
     }
     .nav-inner__nav-buttons {
       @include flex-center;
-      max-width: 500px;
       height: 100%;
       .nav-buttons__button {
         min-width: 160px;

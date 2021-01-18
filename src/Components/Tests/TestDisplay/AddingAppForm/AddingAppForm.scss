@@ -2,10 +2,11 @@
 .AddingAppForm__modal {
   height: 98%;
   overflow-y: scroll;
+  position: relative;
   @include flex-center;
   &::-webkit-scrollbar {
     display: none;
-} 
+  }
   form {
       display: flex;
       flex-direction: column;

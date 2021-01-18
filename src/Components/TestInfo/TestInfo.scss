@@ -93,6 +93,7 @@
           color: lighten($primary, 20%);
           border-radius: 2px;
           transition: all 0.5s;
+          cursor: pointer;
           &:nth-child(2) {
             background: lighten($primary, 20%);
             color: $text-light;
@@ -118,6 +119,7 @@
           border: 1px solid $text-light;
           color: $text-light;
           border-radius: 2px;
+          cursor: pointer;
           transition: all 0.5s;
           &:focus {
             outline: none;

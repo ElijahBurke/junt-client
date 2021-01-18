@@ -7,6 +7,7 @@ import UseNavigate from '../../Helpers/Hooks/UseNavigate';
 import GetScreenWidth from '../../Helpers/Hooks/GetScreenWidth';
 import Hamburger from './Hamburger.svg';
 import actionCreators from '../../Redux/actionCreators';
+import apiHelpers from '../../Helpers/Api/apiService';
 
 function Nav() {
   const navigate = UseNavigate();
@@ -15,13 +16,16 @@ function Nav() {
   const user = useSelector((state) => state.user);
   const setShowSideNavTrue = () => R.compose(dispatch, actionCreators.setShowSideNav)(true);
 
+  const logout = () => apiHelpers.logout()
+    .then(R.compose(navigate('login'), dispatch, actionCreators.logoutUser));
+
   return (
     <nav className="Nav__nav">
       <div className="nav__nav-inner">
         <div className="nav-inner__logo">
           Junt
         </div>
-        {width > 650
+        {width > 875
           ? (
             <div className="nav-inner__nav-buttons">
               <div className="nav-buttons__button">
@@ -39,6 +43,12 @@ function Nav() {
                 <Button text="Log In" onClick={navigate('login')} />
               </div>
               )}
+              {user.name
+        && (
+        <div className="nav-buttons__button">
+          <Button text="Log Out" onClick={logout} />
+        </div>
+        )}
             </div>
           )
           : (

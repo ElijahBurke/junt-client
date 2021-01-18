@@ -13,7 +13,7 @@ function UserLoggedInInfo({ user }) {
         {user.name}
       </div>
       <div className="modal__sub-title">
-        You&apos;re now being redirected to your applications page.
+        You&apos;re now being redirected to your tests page.
       </div>
     </div>
   );

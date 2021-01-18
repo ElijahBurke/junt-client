@@ -60,8 +60,6 @@ const reducer = (state = initialState, action) => {
         },
       };
     case actionTypes.UPDATE_TEST:
-      console.log(action.payload.test.id);
-      console.log(action.payload.test);
       return {
         ...state,
         tests: {

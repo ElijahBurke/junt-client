@@ -44,6 +44,7 @@ function TestDisplay({ test }) {
       </section>
       {addingApplication && (
         <AddingAppModal
+          cb={() => setAddingApplication(false)}
           cover={test.cover}
           idFromTest={test.id}
           setAddingApplication={setAddingApplication}

@@ -6,8 +6,9 @@ import './AddTest.scss';
 import AddTestModalInfo from './AddTestModalInfo/AddTestModalInfo';
 import FullPageModal from '../../FullPageModal/FullPageModal';
 
+const AddTestModal = FullPageModal(AddTestModalInfo);
+
 function AddTest() {
-  const AddTestModal = FullPageModal(AddTestModalInfo);
   const [tests, user] = useSelector((state) => [state.tests, state.user]);
   const [seeMore, setSeeMore] = useState(R.isEmpty(tests));
   const [showAddTest, setShowAddTest] = useState(false);
@@ -53,7 +54,7 @@ function AddTest() {
         </div>
       </section>
       {showAddTest
-      && <AddTestModal setShowAddTest={setShowAddTest} />}
+      && <AddTestModal cb={() => setShowAddTest(false)} setShowAddTest={setShowAddTest} />}
     </>
   );
 }
