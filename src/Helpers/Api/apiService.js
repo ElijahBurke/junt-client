@@ -19,10 +19,14 @@ const fetchRequest = (base, defaults) => (path,
 
 const fetchRequestWithDefaultsAndBaseUrl = fetchRequest(BASE_URL, defaultOptions);
 
-const postBody = R.curry((body, path) => fetchRequestWithDefaultsAndBaseUrl(path, {
-  method: 'POST',
-  body: JSON.stringify(body),
-}));
+const postBody = R.curry((body, path) => {
+  console.log(path);
+  console.log(body);
+  return fetchRequestWithDefaultsAndBaseUrl(path, {
+    method: 'POST',
+    body: JSON.stringify(body),
+  });
+});
 
 const deleteViaParam = R.curry((path, id) => fetchRequestWithDefaultsAndBaseUrl(`${path}/${id}`, {
   method: 'DELETE',
