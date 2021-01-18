@@ -1,5 +1,6 @@
 import * as R from 'ramda';
 
+// const BASE_URL = 'http://localhost:3001';
 const BASE_URL = 'https://junt-backend.herokuapp.com';
 
 const defaultOptions = {
@@ -11,22 +12,23 @@ const defaultOptions = {
   },
 };
 
-const fetchRequest = (base, defaults) => (path,
-  options = {}) => fetch(base + path, Object.assign(defaults, options))
-  .then((res) => (res.status < 400 ? res : Promise.reject(res)))
-  .then((res) => (res.status !== 204 ? res.json() : res))
-  .catch(() => ({ error: 'Something went wrong' }));
+const fetchRequest = (base, defaults) => (
+  path,
+  options = {},
+) => {
+  console.log(base + path);
+  return fetch(base + path, Object.assign(defaults, options))
+    .then((res) => (res.status < 400 ? res : Promise.reject(res)))
+    .then((res) => (res.status !== 204 ? res.json() : res))
+    .catch(() => ({ error: 'Something went wrong' }));
+};
 
 const fetchRequestWithDefaultsAndBaseUrl = fetchRequest(BASE_URL, defaultOptions);
 
-const postBody = R.curry((body, path) => {
-  console.log(path);
-  console.log(body);
-  return fetchRequestWithDefaultsAndBaseUrl(path, {
-    method: 'POST',
-    body: JSON.stringify(body),
-  });
-});
+const postBody = R.curry((body, path) => fetchRequestWithDefaultsAndBaseUrl(path, {
+  method: 'POST',
+  body: JSON.stringify(body),
+}));
 
 const deleteViaParam = R.curry((path, id) => fetchRequestWithDefaultsAndBaseUrl(`${path}/${id}`, {
   method: 'DELETE',
