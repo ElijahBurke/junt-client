@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://junt-backend.herokuapp.com/';
 
 const defaultOptions = {
   credentials: 'include',
