@@ -1,7 +1,4 @@
 @import '../../variables.scss';
-// .AppInfo__app-info {
-//   min-height: 82vh;
-//   @include flex-center;
   .app-info__display {
     min-height: 82vh;
     @include greyMiddleBox;
@@ -143,4 +140,3 @@
       }
     }
   }
-// }
