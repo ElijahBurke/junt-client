@@ -14,9 +14,9 @@ I'm really interested in this role [why you're interested in this role]. I think
 I'm an expert in JavaScript who has a plethora of experience working with a variety of different frameworks...`;
 
 const defaultFormState = {
-  name: 'Test to add applications to',
-  desc: 'I want to test whether I can add applications to this test',
-  cover: coverletterPlaceholder,
+  name: '',
+  desc: '',
+  cover: '',
 };
 
 function AddTestModalInfo({ setShowAddTest }) {

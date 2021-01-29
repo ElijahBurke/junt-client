@@ -76,7 +76,6 @@ function AddingAppForm({ cover, idFromTest, setAddingApplication }) {
         value={toUpdateCover[str]}
         onChange={onChange(setToUpdateCover, str)}
         minLength="1"
-        maxLength="40"
         placeholder="Replace with content specific to this job"
       />
     </label>
